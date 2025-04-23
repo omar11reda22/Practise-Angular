@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="mb-3">
+      <label for="productSelect" class="form-label">Choose a Product</label>
+      <select class="form-select" id="productSelect" [(ngModel)]="idselected">
+        <option selected disabled>Open this select menu</option>
+        <option [value]="cat.id" *ngFor="let cat of categories">
+          {{ cat.name }}
+        </option>
+      </select>
+      <input type="text" [(ngModel)]="idselected" />
+    </div>
+
+    <h1>total order price : {{ totalprice }}</h1>
+    <h1>selected id : {{ idselected }}</h1>
+
+    <ng-container> </ng-container>
+    <div class="col-md-3 mb-4" *ngFor="let item of Products">
+      <div
+        class="card h-100"
+        [ngClass]="{
+          'text-danger': item.Stock <= 1,
+          'text-success': item.Stock > 1
+        }"
+      >
+        <img [src]="item.image" class="card-img-top" alt="Product image" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.category }}</h6>
+          <p class="card-text">{{ item.description }}</p>
+
+          <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
+          <p class="card-text">
+            <strong>Stock:</strong>
+            <span
+              *ngIf="item.Stock != 1; else stock"
+              [ngClass]="{
+                'text-success': item.Stock > 0,
+                'text-danger': item.Stock <= 1
+              }"
+            >
+              {{ item.Stock > 0 ? item.Stock + " in stock" : "Out of stock" }}
+            </span>
+          </p>
+          <ng-template #stock>
+            <p>Stock :Last Item</p>
+          </ng-template>
+
+          <input
+            #countinput
+            type="number"
+            class="form-control mb-2"
+            placeholder="Quantity"
+          />
+          <a
+            href="#"
+            class="btn btn-primary"
+            (click)="Order(countinput.value, item.price)"
+            >Buy Now</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
