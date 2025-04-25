@@ -1,0 +1,14 @@
+<select class="form-select" id="productSelect" [(ngModel)]="selectedcat">
+  <option selected disabled>Open this select menu</option>
+  <option value="0">All</option>
+  <option [value]="cat.id" *ngFor="let cat of categories">
+    {{ cat.id }} - {{ cat.name }}
+    {{ cat.name }}
+  </option>
+</select>
+
+<h2>Total order price : {{ totalorderprice }}</h2>
+<app-product
+  (ontotalprice)="lolo($event)"
+  [recieceid]="selectedcat"
+></app-product>

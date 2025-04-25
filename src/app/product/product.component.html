@@ -2,20 +2,22 @@
   <div class="row">
     <div class="mb-3">
       <label for="productSelect" class="form-label">Choose a Product</label>
-      <select class="form-select" id="productSelect" [(ngModel)]="idselected">
-        <option selected disabled>Open this select menu</option>
-        <option [value]="cat.id" *ngFor="let cat of categories">
-          {{ cat.name }}
-        </option>
-      </select>
-      <input type="text" [(ngModel)]="idselected" />
+
+      <input type="text" [(ngModel)]="idselected" (keyup)="lol($event)" />
+      <input type="text" [(ngModel)]="idselected" (keyup)="lol($event)" />
+      <input type="text" [(ngModel)]="idselected" (keyup)="lol($event)" />
+      <input type="text" [(ngModel)]="idselected" (keyup)="lol($event)" />
     </div>
 
-    <h1>total order price : {{ totalprice }}</h1>
     <h1>selected id : {{ idselected }}</h1>
 
     <ng-container> </ng-container>
-    <div class="col-md-3 mb-4" *ngFor="let item of Products">
+    <div
+      class="col-md-3 mb-4"
+      *ngFor="let item of filterprod"
+      (mouseover)="over($event)"
+      (mouseout)="out($event)"
+    >
       <div
         class="card h-100"
         [ngClass]="{
@@ -26,7 +28,9 @@
         <img [src]="item.image" class="card-img-top" alt="Product image" />
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ item.category }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ item.category }}
+          </h6>
           <p class="card-text">{{ item.description }}</p>
 
           <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
