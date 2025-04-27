@@ -1,0 +1,52 @@
+<!-- Select Category -->
+<div class="container my-4">
+  <select
+    class="form-select mb-4"
+    id="productSelect"
+    [(ngModel)]="selectedcat"
+    (change)="onCategoryChange()"
+  >
+    <option selected disabled>Open this select menu</option>
+    <option value="0">All</option>
+    <option *ngFor="let cat of categories" [value]="cat.id">
+      {{ cat.name }}
+    </option>
+  </select>
+
+  <h2 class="text-center">Selected Category ID: {{ selectedcat }}</h2>
+</div>
+
+<!-- Products List -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let item of filterprod">
+      <div class="card h-100"
+        [ngClass]="{ 'text-danger': item.Stock <= 1, 'text-success': item.Stock > 1 }">
+        
+        <img [src]="item.image" class="card-img-top" alt="Product image" />
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.category }}</h6>
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text">
+            <strong>Price:</strong> ${{ item.price }}
+          </p>
+          <p class="card-text">
+            <strong>Stock:</strong>
+            <span *ngIf="item.Stock != 1; else stockTemplate"
+              [ngClass]="{ 'text-success': item.Stock > 0, 'text-danger': item.Stock <= 1 }">
+              {{ item.Stock > 0 ? item.Stock + ' in stock' : 'Out of stock' }}
+            </span>
+          </p>
+          <ng-template #stockTemplate>
+            <p>Stock: Last Item</p>
+          </ng-template>
+
+          <input type="number" class="form-control mb-2" placeholder="Quantity" />
+          <a href="#" class="btn btn-primary w-100 mt-2">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

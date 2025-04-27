@@ -4,10 +4,11 @@ import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from "./product/product.component";
 import { FooterComponent } from "./footer/footer.component";
 import { CategoryComponent } from "./category/category.component";
+import { ProductwithSErviceComponent } from "./productwith-service/productwith-service.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, ProductComponent, FooterComponent, CategoryComponent],
+  imports: [HeaderComponent, ProductComponent, FooterComponent, CategoryComponent, ProductwithSErviceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

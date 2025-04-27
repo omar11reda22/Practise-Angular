@@ -122,7 +122,7 @@ export class ProductComponent implements OnChanges {
 
   Order(count: string, price: number) {
     this.totalprice += Number(count) * price;
-    this.ontotalprice.emit(this.totalprice);
+    this.ontotalprice.emit(this.totalprice); // fire event == emit 
   }
   onCategoryChange() {}
 

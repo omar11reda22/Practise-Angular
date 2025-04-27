@@ -1,0 +1,86 @@
+/* Center the select and heading */
+#productSelect {
+  width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Card styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image inside the card */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Button styling */
+.btn-primary {
+  width: 100%;
+}
+
+/* Margin under each product */
+.col-md-3 {
+  padding: 15px;
+}
+
+/* Make the quantity input smaller */
+input[type="number"] {
+  max-width: 100px;
+  margin-top: 10px;
+}
+
+/* Text coloring for stock */
+.text-success {
+  font-weight: bold;
+}
+
+.text-danger {
+  font-weight: bold;
+}
+
+/* Responsive handling */
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.col-md-3 {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
