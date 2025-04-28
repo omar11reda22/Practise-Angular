@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../Services/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,27 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+// oninit call when the component is loaded at the first time 
+export class HeaderComponent implements OnInit {
 
+constructor(private notification:NotificationService) {
+  
+  
+}
+  ngOnInit(): void {
+    this.notification.getnotification().subscribe({
+      next:(n)=>{
+console.log(n); 
+      },
+      error: () => {
+        console.log('error');
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    }
+
+
+    );
+  }
 }
