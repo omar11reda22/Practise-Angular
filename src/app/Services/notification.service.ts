@@ -18,7 +18,7 @@ export class NotificationService {
   // try to generate observable
   getnotification(): Observable<string> {
     return new Observable((observer) => {
-      let counter = 0;
+      let counter = 0; 
       let int = setInterval(() => {
         // three mainly methods :
         // next : to send data

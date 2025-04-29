@@ -3,6 +3,7 @@ import { ICategory } from '../Model/icategory';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../product/product.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-category',
