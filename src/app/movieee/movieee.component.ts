@@ -27,4 +27,8 @@ export class MovieeeComponent implements OnInit {
       },
     });
   }
+
+  gotodetails(id: number) {
+    this.router.navigateByUrl(`moviso/moviedetails/${id}`);
+  }
 }

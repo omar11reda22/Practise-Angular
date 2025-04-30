@@ -1,0 +1,32 @@
+<div class="form-container">
+  <h2>Login</h2>
+  <form (submit)="login()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="loginverb.Email"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="loginverb.Paswword"
+        name="password"
+        required
+      />
+    </div>
+
+    <button type="submit">Login</button>
+
+    <div class="form-footer">
+      Don't have an account? <a href="#">Register</a>
+    </div>
+  </form>
+</div>

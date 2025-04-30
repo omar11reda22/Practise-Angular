@@ -1,0 +1,17 @@
+<div class="movie-card">
+  <div class="movie-poster">
+    <img [src]="movie.image" alt="Inception" />
+    <div class="movie-rating">{{ movie.rating }}</div>
+  </div>
+  <div class="movie-details">
+    <h2 class="movie-title">{{ movie.title }}</h2>
+    <span class="movie-director">{{ movie.director }}</span>
+    <div class="movie-genres" *ngFor="let g of movie.genres">
+      <span class="badge bg-secondary">{{ g }}</span>
+    </div>
+    <div class="movie-year">{{ movie.releaseYear }}</div>
+    <button (click)="updateMovie(movie.id)" class="btn btn-primary">
+      Update
+    </button>
+  </div>
+</div>

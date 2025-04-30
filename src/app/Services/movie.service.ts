@@ -25,6 +25,9 @@ export class MovieService {
     );
     return movie;
   }
+  updatemovie(id: number, movie: IMovie): Observable<any> {
+    return this.httpclient.put<void>(`${environment.baseUrl}/${id}`, movie);
+  }
 
   getmoviebydirectorname2(director: string): Observable<IMovie> {
     var movie = this.httpclient.get<IMovie>(`${environment.baseUrl}`);

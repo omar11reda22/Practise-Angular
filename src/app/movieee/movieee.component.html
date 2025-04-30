@@ -15,7 +15,10 @@
           </p>
         </div>
         <div class="card-footer text-center">
-          <button class="btn btn-primary btn-sm me-2">View Details</button>
+          <button class="btn btn-primary btn-sm me-2" (click)="gotodetails(movie.id)">
+view details 
+            <!-- <a [routerLink]="['/movie-details', movie.id]" class="text-white text-decoration-none">Details</a> -->
+          </button>
           <button class="btn btn-danger btn-sm">Delete</button>
         </div>
       </div>
