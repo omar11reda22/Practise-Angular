@@ -8,12 +8,13 @@ import { MovieAddComponent } from './Movieso/movie-add/movie-add.component';
 import { MovieUpdateComponent } from './Movieso/movie-update/movie-update.component';
 import { LoginComponent } from './Account/login/login.component';
 import { RegisterComponent } from './Account/register/register.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: 'actor', component: ActorComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'movieee', component: MovieeeComponent },
+  { path: 'movieee', component: MovieeeComponent, canActivate: [authGuard] },
   { path: 'moviso/moviedetails/:id', component: MovieDetailsComponent },
   { path: 'moviso/movieadd', component: MovieAddComponent },
   { path: 'moviso/movieupdate/:id', component: MovieUpdateComponent },

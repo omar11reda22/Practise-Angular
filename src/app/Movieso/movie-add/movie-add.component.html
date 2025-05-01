@@ -1,1 +1,85 @@
-<p>movie-add works!</p>
+<div class="add-movie-form-container">
+  <h2>Add New Movie</h2>
+
+  <form (ngSubmit)="submitMovie()" #movieForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        required
+        [(ngModel)]="movie.title"
+        name="title"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="director">Director</label>
+      <input
+        type="text"
+        id="director"
+        required
+        [(ngModel)]="movie.director"
+        name="director"
+        class="form-control"
+      />
+    </div>
+    <!-- 
+    <div class="form-group">
+      <label for="genres">Genres (comma separated)</label>
+      <input type="text" id="genres" required [(ngModel)]="" name="genres" class="form-control" />
+    </div> -->
+
+    <div class="form-group">
+      <label for="releaseYear">Release Year</label>
+      <input
+        type="number"
+        id="releaseYear"
+        required
+        [(ngModel)]="movie.releaseYear"
+        name="releaseYear"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        step="0.1"
+        min="0"
+        max="10"
+        id="rating"
+        required
+        [(ngModel)]="movie.rating"
+        name="rating"
+        class="form-control"
+      />
+    </div>
+
+    <!-- <div class="form-group">
+      <label for="actorIds">Actor IDs (comma separated)</label>
+      <input type="text" id="actorIds" [(ngModel)]="actorInput" name="actorIds" class="form-control" />
+    </div> -->
+
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="text"
+        id="image"
+        [(ngModel)]="movie.image"
+        name="image"
+        class="form-control"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success mt-3"
+      [disabled]="!movieForm.form.valid"
+    >
+      Add Movie
+    </button>
+  </form>
+</div>

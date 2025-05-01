@@ -12,7 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
-  loginverb!: ILogin;
+  loginverb: ILogin = {
+    Email: '',
+    Password: '',
+  };
+  errors: string[] = [];
   constructor(private authservice: AuthService, private router: Router) {}
   ngOnInit(): void {}
   login() {
@@ -23,8 +27,12 @@ export class LoginComponent implements OnInit {
         // navigate to home page
         this.router.navigateByUrl('home');
       },
-      error: () => {
-        this.router.navigateByUrl('error');
+      error: (err) => {
+        if (Array.isArray(err.error)) {
+          this.errors = err.error; // Show these in the HTML
+        } else {
+          this.errors = ['Unexpected error occurred.'];
+        }
       },
       complete: () => {
         console.log('complete');

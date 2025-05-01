@@ -27,11 +27,7 @@ export class AuthService {
   }
   // to checking if user logged or not
   isauth(): boolean {
-    if (sessionStorage.getItem('token') != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return sessionStorage.getItem('token') != null;
   }
   getuserdata(): Jwtpayload | null {
     const token = sessionStorage.getItem('token');

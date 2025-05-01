@@ -1,4 +1,10 @@
 <div class="form-container">
+  <div *ngIf="errors?.length" class="alert alert-danger">
+    <ul>
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+  </div>
+
   <h2>Login</h2>
   <form (submit)="login()">
     <div class="form-group">
@@ -17,7 +23,7 @@
       <input
         type="password"
         id="password"
-        [(ngModel)]="loginverb.Paswword"
+        [(ngModel)]="loginverb.Password"
         name="password"
         required
       />
@@ -26,7 +32,7 @@
     <button type="submit">Login</button>
 
     <div class="form-footer">
-      Don't have an account? <a href="#">Register</a>
+      Don't have an account? <a >Register</a>
     </div>
   </form>
 </div>

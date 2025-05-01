@@ -47,17 +47,15 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto">
-        @if (isloggedin == true) {
-
-        <li class="nav-item">
+      <ul class="navbar-nav ms-auto" >
+        <li class="nav-item" *ngIf="isloggedin">
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isloggedin">
           <a class="nav-link">Hi {{ username }}</a>
         </li>
-        }@else {
-        <li class="nav-item">
+
+        <li class="nav-item" *ngIf="!isloggedin">
           <a
             class="nav-link"
             routerLink="account/login"
@@ -65,7 +63,7 @@
             >Login</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isloggedin">
           <a
             class="nav-link"
             routerLink="account/register"
@@ -73,7 +71,6 @@
             >register</a
           >
         </li>
-        }
       </ul>
     </div>
   </div>

@@ -1,23 +1,40 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Movies List</h2>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-center mb-0">Movies List</h2>
+    <button
+      class="btn btn-success"
+      routerLink="Movieso/MovieAdd"
+      routerLinkActive="active"
+      (click)="goToAddMovie()"
+    >
+      Add Movie
+    </button>
+  </div>
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let movie of movies">
-      <div class="card h-100 shadow-sm">
-        <img [src]="movie.image" class="card-img-top" alt="Movie Poster" style="height: 300px; object-fit: cover;">
+      <div class="card h-100 shadow-sm" (click)="details(movie.id)">
+        <img
+          [src]="movie.image"
+          class="card-img-top"
+          alt="Movie Poster"
+          style="height: 300px; object-fit: cover"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ movie.title }}</h5>
           <p class="card-text">
-            <strong>Director:</strong> {{ movie.director }}<br>
-            <strong>Genres:</strong> {{ movie.genres.join(', ') }}<br>
-            <strong>Release Year:</strong> {{ movie.releaseYear }}<br>
+            <strong>Director:</strong> {{ movie.director }}<br />
+            <strong>Genres:</strong> {{ movie.genres.join(", ") }}<br />
+            <strong>Release Year:</strong> {{ movie.releaseYear }}<br />
             <strong>Rating:</strong> ⭐ {{ movie.rating }}/10
           </p>
         </div>
         <div class="card-footer text-center">
-          <button class="btn btn-primary btn-sm me-2" (click)="gotodetails(movie.id)">
-view details 
-            <!-- <a [routerLink]="['/movie-details', movie.id]" class="text-white text-decoration-none">Details</a> -->
+          <button
+            class="btn btn-primary btn-sm me-2"
+            (click)="gotodetails(movie.id)"
+          >
+            View Details
           </button>
           <button class="btn btn-danger btn-sm">Delete</button>
         </div>
