@@ -1,3 +1,4 @@
+{{ movie | json }}
 <div class="add-movie-form-container">
   <h2>Add New Movie</h2>
 
@@ -11,9 +12,17 @@
         [(ngModel)]="movie.title"
         name="title"
         class="form-control"
+        required
+        #title = "ngModel"
       />
     </div>
-
+    @if (title.invalid && title.touched) {
+@if (title.errors?.['required']) {
+  <div class="text-danger">
+<p>title is required</p>
+</div>
+}
+    }
     <div class="form-group">
       <label for="director">Director</label>
       <input
@@ -23,8 +32,18 @@
         [(ngModel)]="movie.director"
         name="director"
         class="form-control"
+        required
+      #director = "ngModel"
       />
     </div>
+    @if (director.invalid && director.touched) {
+@if (director.errors?.['required']) {
+  <div class="text-danger">
+<p>Director is required</p>
+    </div>
+}
+    }
+  
     <!-- 
     <div class="form-group">
       <label for="genres">Genres (comma separated)</label>
@@ -40,9 +59,17 @@
         [(ngModel)]="movie.releaseYear"
         name="releaseYear"
         class="form-control"
+        #release = "ngModel"
       />
     </div>
+@if (release.invalid && release.touched) {
+  <div class="text-danger">
+    @if (release.errors?.['required']) {
+      <p>Release year is required</p>
+    }
 
+</div>
+}
     <div class="form-group">
       <label for="rating">Rating</label>
       <input
@@ -77,7 +104,7 @@
     <button
       type="submit"
       class="btn btn-success mt-3"
-      [disabled]="!movieForm.form.valid"
+      [disabled]="!movieForm.invalid"
     >
       Add Movie
     </button>
