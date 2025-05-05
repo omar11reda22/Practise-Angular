@@ -37,4 +37,19 @@ export class MovieDetailsComponent implements OnInit {
   updateMovie(id: number) {
     this.router.navigateByUrl(`moviso/movieupdate/${id}`);
   }
+
+  deleteMovie(id:number){
+this.movieservice.deletemovie(id).subscribe({
+  next: (res) => {
+    console.log(res);
+    this.router.navigateByUrl('movieee');
+  },
+  error: () => {
+    this.router.navigateByUrl('/error');
+  },
+  complete: () => {
+    console.log('complete');
+  },
+});
+  }
 }

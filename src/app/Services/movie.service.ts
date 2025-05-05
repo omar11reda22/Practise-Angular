@@ -40,4 +40,7 @@ export class MovieService {
 
     return movie;
   }
+  deletemovie(id: number): Observable<any> {
+    return this.httpclient.delete<void>(`${environment.baseUrl}/${id}`);
+  }
 }

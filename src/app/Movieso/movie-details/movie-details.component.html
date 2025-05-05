@@ -6,12 +6,18 @@
   <div class="movie-details">
     <h2 class="movie-title">{{ movie.title }}</h2>
     <span class="movie-director">{{ movie.director }}</span>
+    
     <div class="movie-genres" *ngFor="let g of movie.genres">
       <span class="badge bg-secondary">{{ g }}</span>
     </div>
+
     <div class="movie-year">{{ movie.releaseYear }}</div>
-    <button (click)="updateMovie(movie.id)" class="btn btn-primary">
+    
+    <button (click)="updateMovie(movie.id)" class="btn btn-primary me-2">
       Update
+    </button>
+    <button (click)="deleteMovie(movie.id)" class="btn btn-danger">
+      Delete
     </button>
   </div>
 </div>
