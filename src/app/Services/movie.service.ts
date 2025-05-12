@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { IMovie } from '../Model/imovie';
 import { identifierName } from '@angular/compiler';
 import { environment } from '../../environments/environment.development';
@@ -12,6 +12,20 @@ export class MovieService {
 
   getallmovies(): Observable<IMovie[]> {
     return this.httpclient.get<IMovie[]>(`${environment.baseUrl}`);
+  }
+  topfive(): Observable<IMovie[]> {
+    return this.httpclient.get<IMovie[]>(`${environment.baseUrl}`).pipe(
+      map((movies) => {
+        if (!movies || !movies.length) return [];
+        return movies
+          .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+          .slice(0, 5);
+      }),
+      catchError((error) => {
+        console.error('Error fetching movies:', error);
+        return of([]); // Return empty array on error
+      })
+    );
   }
 
   getmoviebyid(id: number): Observable<IMovie> {
